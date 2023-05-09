@@ -1,9 +1,14 @@
+# dict에서 x:y >> x는 in이지만 y는 in이 아님, dict에서 숫자는 무조건 str
  #점수 변환 함수
 def allocate_course_id(course_id_map, course_name):
     if course_name not in course_id_map:
+        #뉴아이디 설정
         new_id = str(int(course_id_map['id']) + 1)
+        #아이디를 뉴아이디로 재설정
         course_id_map['id'] = new_id
+        #course_name:new_id 생성
         course_id_map[course_name] = new_id
+        #new_id:course_name 생성
         course_id_map[new_id] = course_name
         
         return course_id_map, new_id
@@ -81,12 +86,13 @@ while True:
                     submit_grade[user_course_id] = (user_credit, user_gpa_score)
             else:
                 submit_grade[user_course_id] = (user_credit, user_gpa_score)
-
+        # list에 tuple 집어넣음!!!
         taken_course_list.append((user_course_id, user_credit, user_gpa))
                 
         print('입력되었습니다.')
         
     elif user_input == '2':
+        # list에서 요소 뽑아먹는 법 중요!!!!!!!!!
         for taken_course in taken_course_list:
             print('[' + course_id_map[taken_course[0]] + '] ', end='')
             print(str(taken_course[1]) + '학점: ' + taken_course[2])
@@ -95,6 +101,7 @@ while True:
         submit_gpa, archive_gpa = 0.0, 0.0
         submit_credit, archive_credit = 0, 0
         for course_id in submit_grade:
+            # 얘도 중요!!!!! >> variable[number1][number2]
             submit_gpa += submit_grade[course_id][0] * submit_grade[course_id][1]
             submit_credit += submit_grade[course_id][0]
         for course_id in archive_grade:
