@@ -1,6 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\.idea",
+    "\\.idea\\inspectionProfiles"
   ],
   "SelectedNode": "\\main.py",
   "PreviewInSolutionExplorer": false
